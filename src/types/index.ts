@@ -4,16 +4,14 @@ export interface ICard {
     image: string,
     title: string,
     category: string,
-    price: number
+    price: number | null
 }
 
 export interface IForm {
     payment: string,
     email: string,
     phone: string,
-    address: string,
-    total: number,
-    items: ICard[]
+    address: string
 }
 
 export interface ICardsData {
@@ -23,6 +21,8 @@ export interface ICardsData {
 }
 
 export interface IBascetData {
+    total: number;
+    items: ICard[];
     addCard(card: ICard): void;
     deleteCard(cardId: string): void;
     // updateList(list: ICard[]): void;
@@ -42,5 +42,5 @@ export type TPayment = Pick<IForm, 'payment' | 'address'>;
 
 export type TContacts = Pick<IForm, 'email' | 'phone'>;
 
-export type TPurchase = Pick<IForm, 'total'>;
+export type TPurchase = Pick<IBascetData, 'total'>;
 
